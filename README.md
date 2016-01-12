@@ -1,5 +1,8 @@
 ### RESTAURANT RESERVATION SYSTEM PROJECT
 
-Following is a detailed explanation of the restaurant reservation system.
+This project folder consists of REST API files.
 
-This project folder consists of UI files.
+	Endpoints in the project are:
+	/Restaurant/api/customers
+	/Restaurant/api/reservations
+	/Restaurant/api/datainsert

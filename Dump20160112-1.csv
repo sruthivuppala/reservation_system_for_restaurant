@@ -1,0 +1,93 @@
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+--
+-- Host: localhost    Database: fonduefun_reservation_system
+-- ------------------------------------------------------
+-- Server version	5.7.10-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `customers`
+--
+
+DROP TABLE IF EXISTS `customers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customers` (
+  `CID` int(11) NOT NULL AUTO_INCREMENT,
+  `FIRST_NAME` varchar(100) DEFAULT NULL,
+  `LAST_NAME` varchar(100) DEFAULT NULL,
+  `EMAIL` varchar(200) DEFAULT NULL,
+  `ADDRESS1` varchar(500) DEFAULT NULL,
+  `ADDRESS2` varchar(500) DEFAULT NULL,
+  `CITY` varchar(100) DEFAULT NULL,
+  `ZIP` int(10) NOT NULL,
+  `STATE` varchar(100) DEFAULT NULL,
+  `PHONE` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`CID`),
+  UNIQUE KEY `EMAIL` (`EMAIL`)
+) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customers`
+--
+
+LOCK TABLES `customers` WRITE;
+/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1001,'PENELOPE','GUINESS','PENELOPE.GUINESS@abc.com','28 MySQL Boulevard','','Palo Alto',94301,'2830338429','California'),(1002,'SRU','V','PENELOPE.GUINES@abc.com','28 MySQL Boulevard','','Palo Alto',94301,'California','2830338429'),(1003,'PENELOPE','GUINESS','PNELOPE.GUINESS@abc.com','28 MySQL Boulevard','','Palo Alto',94301,'California','2830338429'),(1004,'SRU','VUPPALA','PENELOPE.GUNESS@abc.com','28 MySQL Boulevard','','Palo Alto',94301,'2830338429','California'),(1005,'PENELOPE','GUINESS','PNELOPE.GUINES@abc.com','28 MySQL Boulevard','','Palo Alto',94301,'California','2830338429'),(1006,'NICK','WAHLBERG','NICK.WAHLBERG@ab.com','23 Workhaven Lane','','Richmond',23294,'8386352866','Virginia'),(1007,'PENELOPE','GUINESS','NICK.WAHLBERG@abcd.com','28 MySQL Boulevard','','Palo Alto',94301,'2830338429','California'),(1008,'NCK','GUINESS','NICK.WRG@abcd.com','28 MySQL Boulevard','','Palo Alto',94301,'2830338429','California');
+/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reservations`
+--
+
+DROP TABLE IF EXISTS `reservations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reservations` (
+  `Reservation_ID` varchar(50) NOT NULL,
+  `Reservation_Date` date NOT NULL,
+  `Reservation_Time` time NOT NULL,
+  `Reservation_Size` int(50) NOT NULL,
+  `Table_Type` enum('ROUND2-4','ROUND5-6','ROUND6-8','RECTANGLE2','RECTANGLE4','RECTANGLE8') DEFAULT NULL,
+  `Reservation_Status` enum('Confirm','Waiting','Cancelled') DEFAULT NULL,
+  `CID` int(11) DEFAULT NULL,
+  `Reservation_Creation_Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Reservation_Modification_Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Reservation_ID`),
+  KEY `CID` (`CID`),
+  CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`CID`) REFERENCES `customers` (`CID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reservations`
+--
+
+LOCK TABLES `reservations` WRITE;
+/*!40000 ALTER TABLE `reservations` DISABLE KEYS */;
+INSERT INTO `reservations` VALUES ('FF1234','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1001,'2016-01-12 08:56:00','2016-01-12 09:33:00'),('FF1278','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1007,'2016-01-12 20:19:53','2016-01-12 20:19:53'),('FF1926','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1005,'2016-01-12 19:59:23','2016-01-12 19:59:23'),('FF1983','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1007,'2016-01-12 20:22:48','2016-01-12 20:22:48'),('FF2424','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1005,'2016-01-12 20:08:25','2016-01-12 20:08:25'),('FF2478','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1005,'2016-01-12 20:09:00','2016-01-12 20:09:00'),('FF2518','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1001,'2016-01-12 09:09:10','2016-01-12 09:09:10'),('FF2768','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1005,'2016-01-12 09:52:42','2016-01-12 09:52:42'),('FF2786','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1005,'2016-01-12 20:01:16','2016-01-12 20:01:16'),('FF4304','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1005,'2016-01-12 09:53:35','2016-01-12 09:53:35'),('FF4409','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1003,'2016-01-12 09:45:43','2016-01-12 09:45:43'),('FF4791','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1007,'2016-01-12 20:23:05','2016-01-12 20:23:05'),('FF5427','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1005,'2016-01-12 20:00:00','2016-01-12 20:00:00'),('FF6037','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1008,'2016-01-12 20:39:17','2016-01-12 20:39:17'),('FF6083','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1005,'2016-01-12 09:51:23','2016-01-12 09:51:23'),('FF6720','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1007,'2016-01-12 20:23:41','2016-01-12 20:23:41'),('FF7928','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1008,'2016-01-12 21:45:17','2016-01-12 21:45:17'),('FF7934','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1007,'2016-01-12 20:24:09','2016-01-12 20:24:09'),('FF8225','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1008,'2016-01-12 20:32:14','2016-01-12 20:32:14'),('FF9169','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1003,'2016-01-12 09:10:29','2016-01-12 09:10:29'),('FF9546','2016-01-08','20:23:53',5,'ROUND2-4','Confirm',1003,'2016-01-12 09:44:48','2016-01-12 09:44:48');
+/*!40000 ALTER TABLE `reservations` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-01-12 17:48:06
