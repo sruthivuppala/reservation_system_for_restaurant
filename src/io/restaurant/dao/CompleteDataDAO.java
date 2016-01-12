@@ -56,7 +56,7 @@ public class CompleteDataDAO {
 			ps2 = con.prepareStatement("INSERT INTO fonduefun_reservation_system.reservations (Reservation_ID, "
 					+ "Reservation_Date, Reservation_Time, Reservation_Size, Table_Type, Reservation_Status, "
 					+ "CID)"
-					+ "VALUES (concat('FF',(FLOOR(RAND() * (9999 + 1)))),?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+					+ "VALUES (concat('FF',FLOOR( 1000 + ( RAND( ) *8999 ))),?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			ps2.setString(1,completeData.getReservation_Date());
 			ps2.setString(2,completeData.getReservation_Time());
