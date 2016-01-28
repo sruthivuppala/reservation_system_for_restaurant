@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-xs-11">
+        <p>Reservations</p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Action</th>
+                <th ng-click="viewRC.sortBy='reservation_ID'; viewRC.sortOrder = !viewRC.sortOrder;">Booking ID</th>
+                <th ng-click="viewRC.sortBy='reservation_Date'; viewRC.sortOrder = !viewRC.sortOrder;">Party Date</th>
+                <th ng-click="viewRC.sortBy='reservation_Time'; viewRC.sortOrder = !viewRC.sortOrder;">Party Time</th>
+                <th ng-click="viewRC.sortBy='reservation_Size'; viewRC.sortOrder = !viewRC.sortOrder;">Party Size</th>
+                <th ng-click="viewRC.sortBy='table_type'; viewRC.sortOrder = !viewRC.sortOrder;">Table Type</th>
+                <th ng-click="viewRC.sortBy='reservation_Status'; viewRC.sortOrder = !viewRC.sortOrder;">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="reservation in viewRC.reservations | filter:viewRC.searchTxt | orderBy:viewRC.sortBy:viewRC.sortOrder">
+                <td><a ui-sref="app.owner.reservationDetails({id: reservation.cid})"><span class="glyphicon glyphicon-user"></span></a></td>
+                <td>{{reservation.reservation_ID}}</td>
+                <td>{{reservation.reservation_Date}}</td>
+                <td>{{reservation.reservation_Time}}</td>
+                <td>{{reservation.reservation_Size}}</td>
+                <td>{{reservation.table_Type}}</td>
+                <td>{{reservation.reservation_Status}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--
+-->
