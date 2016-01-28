@@ -1,0 +1,130 @@
+<div class="row" ng-hide="createR.successful">
+    <div class="col-xs-12">
+        <h3>Create Reservation</h3>
+        <!-- Reservation Details -->
+        <h4>Reservation Details</h4>
+        <form class="form-horizontal" role="form" ng-submit="createR.addReservation()">
+            <!-- Event Date & Time-->
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Event Date</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="date" ng-model="createR.reservation_Date" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Event Time</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" ng-model="createR.reservation_Time" placeholder="hh:mm" required>
+                </div>
+            </div>
+
+            <!-- Party Size -->
+            <div class="form-group">
+                <label class="col-xs-3 control-label">No of guests</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" ng-model="createR.reservation_Size" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Table Type</label>
+                <div class="col-xs-4">
+                    <select class="form-control"  ng-model="createR.table_Type" required>
+                        <option name="ROUND2-4">ROUND2-4</option>
+                        <option name="ROUND5-6">ROUND5-6</option>
+                        <option name="ROUND6-8">ROUND6-8</option>
+                        <option name="RECTANGLE-2">RECTANGLE-2</option>
+                        <option name="RECTANGLE-4">RECTANGLE-4</option>
+                        <option name="RECTANGLE-8">RECTANGLE-8</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Personal Info -->
+            <h4>Personal info</h4>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">First name</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" placeholder="First Name" ng-model="createR.firstname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Last name</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" placeholder="Last Name" ng-model="createR.lastname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Email:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" placeholder="user@domain.com" ng-model="createR.email">
+                </div>
+            </div>
+            <!-- address-line1 input-->
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Address Line 1</label>
+                <div class="col-xs-4">
+                    <input id="address-line1" name="address-line1" type="text" placeholder="Street address, P.O. box,
+                    company name, c/o" class="form-control" ng-model="createR.address1">
+                </div>
+            </div>
+            <!-- address-line2 input-->
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Address Line 2</label>
+                <div class="col-xs-4">
+                    <input id="address-line2" name="address-line2" type="text" placeholder="Apartment, suite , unit,
+                    building, floor, etc." class="form-control" ng-model="createR.address2">
+                </div>
+            </div>
+            <!-- city input-->
+            <div class="form-group">
+                <label class="col-xs-3 control-label">City</label>
+                <div class="col-xs-4">
+                    <input id="city" name="city" type="text" placeholder="City"
+                           class="form-control" ng-model="createR.city">
+                    <p class="help-block">Apartment, suite , unit, building, floor, etc.</p>
+                </div>
+            </div>
+            <!-- region input-->
+            <div class="form-group">
+                <label class="col-xs-3 control-label">State / Province / Region</label>
+                <div class="col-xs-4">
+                    <input id="region" name="region" type="text" placeholder="state / province / region"
+                           class="form-control" ng-model="createR.state">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <!-- postal-code input-->
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Postal code</label>
+                <div class="col-xs-4">
+                    <input id="zip" name="zip" type="number" placeholder="zip or postal code"
+                           class="form-control" ng-model="createR.zip">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <!-- phone number-->
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Phone</label>
+                <div class="col-xs-4">
+                    <input id="phone" name="phone" type="number" placeholder="phone number"
+                           class="form-control" ng-model="createR.phone">
+                </div>
+            </div>
+
+            <!-- Submit button-->
+            <div class="form-group">
+                <label class="col-xs-3 control-label"></label>
+                <div class="col-xs-4">
+                    <input type="submit" ng-click="createR.addReservation()" class="btn btn-info" value="Submit"/>
+                    <input type="reset" class="btn btn-info" value="Reset"/>
+                </div>
+            </div>
+        </form>
+        <!-- End of Personal Info -->
+    </div>
+</div>
+
+<div ng-show="createR.successful">
+    <p>Reservation is done successfully.</p>
+    <p ng-model="createR.reservation_ID">Your Booking Reference Number is {{createR.reservation_ID}}</p>
+</div>

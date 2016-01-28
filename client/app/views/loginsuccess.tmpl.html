@@ -1,0 +1,33 @@
+<div class="row">
+<div class="col-xs-12">
+    <form class="form-horizontal" role="form">
+        <h2>Administrator</h2>
+        <div class="form-group">
+            <nav class="navbar navbar-default"><!-- start of navigation toolbar -->
+                <div class="container-fluid">
+
+                    <div class="navbar-header"><!-- start of collapsed nav-bar -->
+
+                        <button
+                                type="button"
+                                class="navbar-toggle"
+                                data-toggle="collapse"
+                                data-target="#admin_navbar"
+                                aria-expanded="false" style="color: white">List of Activities</button>
+                    </div><!-- end of collapsed nav-bar -->
+
+                    <div class="collapse navbar-collapse" id="admin_navbar"><!-- start of uncollapsed nav-bar -->
+                        <ul class="nav navbar-nav">
+                            <li ui-sref="app.owner.viewReservations"><a>List of Reservations</a></li>
+                            <li ui-sref="app.owner.seatingArea"><a>View Seating Area</a></li>
+                            <li ui-sref="app.owner.createReservation"><a>Create Reservation</a></li>
+                            <li ui-sref="app.owner.editReservation"><a>Edit Reservation</a></li>
+                            <li ui-sref="app.owner.cancelReservation"><a>Cancel Reservation</a></li>
+                        </ul>
+                    </div><!-- end of uncollapsed nav-bar -->
+                </div><!--End of container-fluid -->
+            </nav><!-- End of navigation -->
+        </div>
+    </form>
+</div>
+</div>
